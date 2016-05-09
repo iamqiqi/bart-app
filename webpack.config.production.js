@@ -15,11 +15,11 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'subclub-chat-client.js',
+    filename: 'bart-app.js',
   },
   plugins: [
     definePlugin,
-    new ExtractTextPlugin('[name]-[chunkhash].css', { allChunks: true }),
+    new ExtractTextPlugin('bart-app.css', { allChunks: true }),
   ],
   module: {
     loaders: [
