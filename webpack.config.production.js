@@ -19,7 +19,6 @@ module.exports = {
   },
   plugins: [
     definePlugin,
-    new ExtractTextPlugin('bart-app.css', { allChunks: true }),
   ],
   module: {
     loaders: [
@@ -30,7 +29,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!postcss-loader!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true'),
+        loader: 'style!css?-modules&importLoaders=2&sourceMap&-localIdentName=[path][name]___[local]___[hash:base64:5]!postcss-loader!sass?outputStyle=expanded&sourceMap',
       },
     ],
   },
