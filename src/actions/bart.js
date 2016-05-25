@@ -7,10 +7,17 @@ export function updateStationListData(stationListData) {
   };
 }
 
-export function setCurrentStation(station) {
+export function setCurrentStation(currentStation) {
   return {
     type: types.SET_CURRENT_STATION,
-    station,
+    currentStation,
+  };
+}
+
+export function setDestStation(destStation) {
+  return {
+    type: types.SET_DEST_STATION,
+    destStation,
   };
 }
 
@@ -34,4 +41,3 @@ export function setCarsTimeFilter(carsOrTime) {
     carsOrTime,
   };
 }
-

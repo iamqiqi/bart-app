@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Trainline from '../components/Trainline';
 import CarsTimeToggle from '../components/CarsTimeToggle';
 import DirectionFilters from '../components/DirectionFilters';
+import Schedule from '../components/Schedule';
 import DevTools from './DevTools';
 
 import '../sass/App.scss';
@@ -19,7 +20,8 @@ export default class App extends Component {
           <CarsTimeToggle />
         </div>
         <Trainline />
-        { false && __DEVTOOLS__ && typeof window.devToolsExtension === 'undefined' && <DevTools />}
+        <Schedule />
+        { false && __DEVTOOLS__ && typeof window.devToolsExtension === 'undefined' && <DevTools /> }
       </div>
     );
   }
