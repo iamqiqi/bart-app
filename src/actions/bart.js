@@ -7,6 +7,13 @@ export function updateStationListData(stationListData) {
   };
 }
 
+export function updateScheduleData(scheduleData) {
+  return {
+    type: types.UPDATE_SCHEDULE_DATA,
+    scheduleData,
+  };
+}
+
 export function setCurrentStation(currentStation) {
   return {
     type: types.SET_CURRENT_STATION,

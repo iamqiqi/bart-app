@@ -5,6 +5,8 @@ import destStation from './destStation';
 import carsTimeFilter from './carsTimeFilter';
 import directionFilter from './directionFilter';
 import lineFilter from './lineFilter';
+import departureTime from './departureTime';
+import scheduleData from './scheduleData';
 
 const rootReducer = combineReducers({
   stationListData,
@@ -13,6 +15,8 @@ const rootReducer = combineReducers({
   directionFilter,
   lineFilter,
   destStation,
+  departureTime,
+  scheduleData,
 });
 
 export default rootReducer;

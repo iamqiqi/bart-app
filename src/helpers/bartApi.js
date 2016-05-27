@@ -4,11 +4,57 @@ import StationLocations from '../constants/StationLocations';
 
 let uniqueId = 0;
 
+const BARTApi = 'MW9S-E7SL-26DU-VV8V';
+
 export function getBART(callback) {
-  var BARTApi = 'MW9S-E7SL-26DU-VV8V';
   $.get('https://api.bart.gov/api/etd.aspx?cmd=etd&orig=ALL&key=' + BARTApi + '&callback=?', function(xml) {
     callback(xml);
   });
+}
+
+export function getSchedule(orig, dest, callback) {
+  $.get('//api.bart.gov/api/sched.aspx?cmd=depart&orig='+ orig + '&dest=' + dest + '&key=' + BARTApi + '&callback=?', function(xml) {
+    callback(xml);
+  });
+}
+
+export function processSchedule(xml) {
+  var data = $.xml2json(xml);
+
+  var scheduleArray = [];
+  //var day = new Date();
+
+  data.schedule.request.trip.forEach(function(schedule) {
+    // process departure time
+    // var origTime = schedule.leg.origTimeMin.split(':');
+    // var origDate = schedule.leg.origTimeDate.split('/');
+    // var origHours;
+    // var origMins = parseInt(origTime[1].slice(0,-3));
+    // if ((origTime[1].slice(-2) === 'PM') && (origTime[0] !== '12')) {
+    //   origHours = parseInt(origTime[0]) + 12;
+    // } else {
+    //   origHours = parseInt(origTime[0]);
+    // }
+    // var departureTime = new Date(parseInt(origDate[2]), parseInt(origDate[0])-1, parseInt(origDate[1]), origHours, origMins);
+
+    // // process destination time
+    // var destTime = schedule.leg.destTimeMin.split(':');
+    // var destDate = schedule.leg.destTimeDate.split('/');
+    // var destHours;
+    // var destMins = parseInt(destTime[1].slice(0,-3));
+    // if ((destTime[1].slice(-2) === 'PM') && (destTime[0] !== '12')) {
+    //   destHours = parseInt(destTime[0]) + 12;
+    // } else {
+    //   destHours = parseInt(destTime[0]);
+    // }
+    // var arrivalTime = new Date(parseInt(destDate[2]), parseInt(destDate[0])-1, parseInt(destDate[1]), destHours, destMins);
+
+    scheduleArray.push({
+      departure: schedule.leg.origTimeMin,
+      arrival: schedule.leg.destTimeMin
+    });
+  });
+  return scheduleArray;
 }
 
 export function processBART(xml) {
