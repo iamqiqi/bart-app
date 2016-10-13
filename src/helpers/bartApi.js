@@ -6,7 +6,7 @@ let uniqueId = 0;
 
 export function getBART(callback) {
   var BARTApi = 'MW9S-E7SL-26DU-VV8V';
-  $.get('http://api.bart.gov/api/etd.aspx?cmd=etd&orig=ALL&key=' + BARTApi + '&callback=?', function(xml) {
+  $.get('https://api.bart.gov/api/etd.aspx?cmd=etd&orig=ALL&key=' + BARTApi + '&callback=?', function(xml) {
     callback(xml);
   });
 }
